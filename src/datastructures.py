@@ -41,15 +41,16 @@ class FamilyStructure:
     def _generateId(self):
         return randint(0, 99999999)
 
-    def add_member(self, member):
-       
+    def add_member(self, member):       
         self._members.append(member)
         return self._members
 
     def delete_member(self, id):
-      
-       return self._members 
-        
+        for idx, member in enumerate(self._members):
+            if member["id"] == id:
+                self._members.pop(idx)
+        return self._members
+              
 
     def get_member(self, id):
         for member in self._members:

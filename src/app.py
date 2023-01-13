@@ -50,6 +50,10 @@ def get(id):
     member = jackson_family.get_member(id)
     return jsonify(member), 200
 
+@app.route('/member/<int:id>', methods = ['DELETE'])
+def clear(id):
+    mermber = jackson_family.delete_member(id)
+    return {}, 200
 
 
 
