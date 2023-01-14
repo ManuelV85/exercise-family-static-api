@@ -33,9 +33,7 @@ def list_members():
     response_body = {
             "family": members
     }
-    print("keep going")
-
-
+    print("keep going") #test on terminal
     return jsonify(response_body), 200
 
 @app.route('/member', methods = ['POST'])
@@ -48,13 +46,16 @@ def add_member():
 @app.route('/member/<int:id>', methods=['GET'])
 def get(id):
     member = jackson_family.get_member(id)
-    return jsonify(member), 200
+    if member == False:
+        return "it does net exist", 404
+    else:
+        return jsonify(member), 200
 
 @app.route('/member/<int:id>', methods = ['DELETE'])
 def clear(id):
-    mermber = jackson_family.delete_member(id)
-    return {}, 200
-
+    member = jackson_family.delete_member(id)
+    return "Done", 200
+    
 
 
         

@@ -45,18 +45,25 @@ class FamilyStructure:
         self._members.append(member)
         return self._members
 
-    def delete_member(self, id):
+    def delete_member(self, id):       
         for idx, member in enumerate(self._members):
             if member["id"] == id:
-                self._members.pop(idx)
+                self._members.pop(idx)                        
         return self._members
               
 
     def get_member(self, id):
+        exist = False
+        item = None
         for member in self._members:
             if member["id"] == id:
-                return member
-        return {}
+                exist = True
+                item = member
+        if exist == False:
+            return False
+        else:
+            return item
+        
         
 
     # this method is done, it returns a list with all the family members
